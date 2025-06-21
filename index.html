@@ -2,16 +2,26 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>MindGen | Yapay Zeka ile Öğren</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindGen | Yapay Zeka ile Öğren</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f5f5ff, #e5e5ff);
-      color: #333;
-      text-align: center;
-      padding: 60px 20px;
       margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f5f7ff, #e5e5ff);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 30px;
     }
 
     h1 {
@@ -20,91 +30,75 @@
       margin-bottom: 10px;
     }
 
-    h2 {
-      font-size: 2em;
-      margin-top: 60px;
-      color: #222;
-    }
-
     p {
       font-size: 1.2em;
-      max-width: 700px;
-      margin: 20px auto;
-      line-height: 1.6;
+      max-width: 600px;
+      margin: 10px auto;
     }
 
     .button {
       background-color: #4b0082;
       color: white;
       padding: 15px 30px;
-      font-size: 1em;
+      font-size: 1.1em;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
       margin-top: 30px;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
     .button:hover {
-      background-color: #360065;
+      background-color: #2e005e;
+    }
+
+    .email-form {
+      margin-top: 30px;
+    }
+
+    .email-form input {
+      padding: 10px;
+      font-size: 1em;
+      width: 250px;
+      border: 1px solid #999;
+      border-radius: 5px;
+    }
+
+    .email-form button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-left: 10px;
+      background-color: #4b0082;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     footer {
-      margin-top: 80px;
+      text-align: center;
       font-size: 0.9em;
-      color: #777;
-    }
-
-    .features {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .feature-box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 250px;
-    }
-
-    .feature-box h3 {
-      color: #4b0082;
+      color: #555;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>🧠 MindGen</h1>
+    <p>Yapay zekayla öğrenmeyi ve üretmeyi birleştiren platforma hoş geldiniz!</p>
+    <p>Bu site GitHub Pages ile yayınlanmaktadır 🚀</p>
+    <a href="quiz.html" class="button">Quiz Başlat</a>
 
-  <h1>🧠 MindGen</h1>
-  <p>Yapay zekayla öğren, quiz çöz, bilgi üret!  
-     <br>MindGen seni sınavlara değil, geleceğe hazırlar.</p>
-
-  <a href="quiz.html" class="button">Quiz'e Başla</a>
-
-  <h2>🚀 Neler Sunuyoruz?</h2>
-  <div class="features">
-    <div class="feature-box">
-      <h3>📚 Akıllı Özet</h3>
-      <p>PDF'lerden konu özeti çıkarır, zaman kazandırır.</p>
+    <div class="email-form">
+      <input type="email" placeholder="E-posta adresiniz" />
+      <button>Kaydol</button>
     </div>
-    <div class="feature-box">
-      <h3>📝 Quiz Üretimi</h3>
-      <p>Her konu için özgün sorular üretir. Ezber değil, öğrenme odaklıdır.</p>
-    </div>
-    <div class="feature-box">
-      <h3>🎯 Hedef Takibi</h3>
-      <p>Konu bazlı gelişimini takip et, eksiklerini fark et.</p>
-    </div>
-  </div>
+  </header>
 
   <footer>
-    <p>© 2025 MindGen.<br> Cenk Kiper ve Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</p>
+    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
   </footer>
-
 </body>
 </html>
