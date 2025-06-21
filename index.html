@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>MindGen – Girişli Eğitim Platformu</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -12,24 +12,45 @@
       background-size: cover;
       margin: 0;
       padding: 0;
-      text-align: center;
       color: #ffffff;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.7);
       color: white;
-      padding: 30px;
-      font-size: 28px;
+      padding: 20px 40px;
+      font-size: 24px;
       font-weight: 600;
       letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    header .login-btn {
+      font-size: 14px;
+      padding: 8px 16px;
+      background-color: #ffffff;
+      color: #2e7d32;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
     }
     main {
       background-color: rgba(0, 0, 0, 0.5);
-      margin: 50px auto;
+      margin: 80px auto;
       padding: 40px;
       max-width: 400px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
     }
     button {
       background-color: #388e3c;
@@ -58,16 +79,18 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
       font-size: 13px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      text-align: center;
       color: #ddd;
     }
   </style>
 </head>
 <body>
   <header>
-    🧠 MindGen – Girişli Eğitim Platformu
+    <div class="logo">
+      <img src="/mnt/data/1bc1c11c-17e4-4ae5-8782-008359f8022a.png" alt="MindGen Logo">
+      <span>MindGen – Girişli Eğitim Platformu</span>
+    </div>
+    <button class="login-btn" onclick="document.getElementById('login-section').scrollIntoView()">Giriş Yap</button>
   </header>
 
   <main id="main-content">
@@ -77,7 +100,7 @@
   </main>
 
   <main id="login-section">
-    <h3 style="margin-bottom: 30px;">🔐 Giriş Yapın</h3>
+    <h3 style="margin-bottom: 30px; font-family: 'Playfair Display', serif; font-size: 22px;">🔐 Giriş Yapın</h3>
     <form id="login-form">
       <input type="email" id="loginEmail" placeholder="E-posta" required><br>
       <input type="password" id="loginPassword" placeholder="Şifre"><br>
