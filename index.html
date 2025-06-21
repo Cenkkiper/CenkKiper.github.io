@@ -4,43 +4,64 @@
   <meta charset="UTF-8">
   <title>MindGen – Girişli Eğitim Platformu</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #cfe9f1, #eaf4e2);
+      font-family: 'Inter', sans-serif;
+      background: url('https://images.unsplash.com/photo-1556742049-908a5a03b5aa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
       margin: 0;
       padding: 0;
       text-align: center;
+      color: #ffffff;
     }
     header {
-      background-color: #2e7d32;
+      background-color: rgba(0, 0, 0, 0.6);
       color: white;
-      padding: 20px;
-      font-size: 20px;
+      padding: 30px;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
     main {
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: 50px auto;
       padding: 40px;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
     button {
       background-color: #388e3c;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
       cursor: pointer;
-      margin: 10px;
-      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      width: 100%;
     }
     input {
-      padding: 10px;
-      margin: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #login-section {
-      margin-top: 30px;
+      padding: 12px;
+      margin: 10px 0;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
     }
     #main-content {
       display: none;
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      font-size: 13px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: #ddd;
     }
   </style>
 </head>
@@ -56,7 +77,7 @@
   </main>
 
   <main id="login-section">
-    <h3>🔑 Giriş Yap</h3>
+    <h3 style="margin-bottom: 30px;">🔐 Giriş Yapın</h3>
     <form id="login-form">
       <input type="email" id="loginEmail" placeholder="E-posta" required><br>
       <input type="password" id="loginPassword" placeholder="Şifre"><br>
@@ -65,7 +86,7 @@
   </main>
 
   <footer>
-    <p>© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</p>
+    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
   </footer>
 
   <script>
@@ -76,16 +97,13 @@
       const email = document.getElementById("loginEmail").value.trim();
       const password = document.getElementById("loginPassword").value;
 
-      // Eğer admin e-postası ise şifresiz girişe izin ver
       if (adminEmails.includes(email)) {
         localStorage.setItem("adminLoggedIn", "true");
         showPrivate();
         return;
       }
 
-      // Diğer kullanıcılar için şifre kontrolü
       if (email && password) {
-        // Bu kısımda ileride gerçek kimlik doğrulama yapılabilir
         localStorage.setItem("adminLoggedIn", "true");
         showPrivate();
       } else {
