@@ -56,17 +56,10 @@
   </main>
 
   <main id="login-section">
-    <h3>🔑 Kullanıcı Girişi</h3>
-    <form id="user-form">
-      <input type="email" id="userEmail" placeholder="E-posta" required><br>
-      <input type="password" id="userPassword" placeholder="Şifre" required><br>
+    <h3>🔑 Giriş Yap</h3>
+    <form id="login-form">
+      <input type="email" id="loginEmail" placeholder="E-posta" required><br>
       <button type="submit">Giriş Yap</button>
-    </form>
-
-    <h3>👑 Admin Girişi</h3>
-    <form id="admin-form">
-      <input type="email" id="adminEmail" placeholder="Sadece admin e-posta"><br>
-      <button type="submit">Admin Giriş</button>
     </form>
   </main>
 
@@ -77,28 +70,21 @@
   <script>
     const adminEmails = ["cenkkiper@gmail.com", "aysegul_guncan@hotmail.com"];
 
-    document.getElementById("user-form").addEventListener("submit", function(e) {
+    document.getElementById("login-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      const email = document.getElementById("userEmail").value;
-      const password = document.getElementById("userPassword").value;
-      netlifyIdentity.open(); // Formla değil widget'la açılabilir
-      alert("Netlify Identity kullanılarak giriş yapılmalı.");
-    });
+      const email = document.getElementById("loginEmail").value;
 
-    document.getElementById("admin-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const email = document.getElementById("adminEmail").value;
+      // Admin e-posta ile şifresiz giriş
       if (adminEmails.includes(email)) {
         localStorage.setItem("adminLoggedIn", "true");
         showPrivate();
       } else {
-        alert("Yetkisiz erişim!");
+        alert("Sadece kayıtlı admin e-posta ile giriş yapılabilir.");
       }
     });
 
     function logout() {
       localStorage.removeItem("adminLoggedIn");
-      netlifyIdentity.logout();
       showPublic();
     }
 
