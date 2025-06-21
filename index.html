@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       color: #ffffff;
+      min-height: 100vh;
     }
     body::before {
       content: "";
@@ -32,6 +33,7 @@
       justify-content: space-between;
       align-items: center;
       color: white;
+      flex-wrap: wrap;
     }
     header .logo {
       display: flex;
@@ -58,10 +60,11 @@
     .hero {
       text-align: center;
       margin: 160px auto 40px auto;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 60px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 60px 30px;
       border-radius: 12px;
       max-width: 700px;
+      backdrop-filter: blur(5px);
     }
     .hero h1 {
       font-size: 46px;
@@ -128,6 +131,32 @@
       position: fixed;
       bottom: 0;
       width: 100%;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: center;
+      }
+      .hero {
+        margin: 100px 20px 20px 20px;
+        padding: 30px 20px;
+        max-width: 95vw;
+      }
+      .hero h1 {
+        font-size: 30px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .login-btn {
+        align-self: center;
+      }
+      footer {
+        font-size: 11px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
