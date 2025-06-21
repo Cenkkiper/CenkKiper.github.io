@@ -22,11 +22,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.35);
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: -1;
     }
     header {
-      background-color: rgba(20, 20, 20, 0.7);
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 16px 40px;
       font-size: 22px;
       display: flex;
@@ -49,31 +49,35 @@
     }
     .login-btn {
       font-size: 14px;
-      padding: 8px 16px;
+      padding: 10px 24px;
       background-color: #2e7d32;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 30px;
       font-weight: bold;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .login-btn:hover {
+      background-color: #1b5e20;
     }
     .hero {
       text-align: center;
       margin: 160px auto 40px auto;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 60px 30px;
-      border-radius: 12px;
+      border-radius: 20px;
       max-width: 700px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
     }
     .hero h1 {
-      font-size: 46px;
+      font-size: 52px;
       font-family: 'DM Serif Display', serif;
       margin-bottom: 20px;
       color: white;
     }
     .hero p {
-      font-size: 20px;
+      font-size: 22px;
       color: white;
     }
     #login-section {
@@ -95,7 +99,7 @@
       right: 16px;
       background: transparent;
       border: none;
-      font-size: 24px;
+      font-size: 28px;
       color: white;
       cursor: pointer;
     }
@@ -121,6 +125,11 @@
     }
     #main-content {
       display: none;
+      padding: 40px;
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 700px;
     }
     footer {
       background-color: rgba(0, 0, 0, 0.6);
@@ -145,7 +154,7 @@
         max-width: 95vw;
       }
       .hero h1 {
-        font-size: 30px;
+        font-size: 32px;
       }
       .hero p {
         font-size: 16px;
