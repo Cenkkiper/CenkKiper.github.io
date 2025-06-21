@@ -101,38 +101,20 @@
       text-transform: uppercase;
     }
 
-    .topic-list {
+    .topic-box {
       display: none;
       margin-top: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
-    .topic-item {
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .card-container {
-      display: none;
-      margin-top: 20px;
-    }
-    .card {
+    .topic-box .card {
       background: rgba(255,255,255,0.1);
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
       display: inline-block;
       width: 100px;
-    }
-    .back-btn {
-      margin-top: 20px;
-      padding: 8px 15px;
-      background: #00ffee;
-      border: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     #login-section {
@@ -201,4 +183,83 @@
   </style>
 </head>
 <body>
-<!-- Güncellenmiş HTML ve JS devam edecek -->
+  <div class="hero" id="hero">
+    <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
+    <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
+    <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
+  </div>
+
+  <div id="login-section">
+    <button class="close-btn" onclick="closeLogin()">×</button>
+    <h2>Giriş Yap</h2>
+    <input type="email" id="email" placeholder="Email adresi">
+    <input type="password" id="password" placeholder="Şifre">
+    <button type="submit" onclick="handleLogin()">Gönder</button>
+  </div>
+
+  <div id="main-content">
+    <h2>Bankacılık Eğitim Modülleri</h2>
+    <div class="module-grid">
+      <div class="module-box" onclick="openTopics('trendler')">
+        <h3>Bankacılıkta Yeni Trendler</h3>
+      </div>
+      <div class="module-box" onclick="openTopics('ekonomi')">
+        <h3>Genel Ekonomi, Finans ve Bankacılık</h3>
+      </div>
+      <div class="module-box" onclick="openTopics('guncel')">
+        <h3>Güncel Bilgiler</h3>
+      </div>
+    </div>
+    <div id="trendler" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
+    </div>
+    <div id="ekonomi" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
+    </div>
+    <div id="guncel" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
+    </div>
+  </div>
+
+  <footer><span class="scrolling-text">© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</span></footer>
+
+  <script>
+    function showLogin() {
+      document.getElementById("login-section").classList.add("active");
+    }
+    function closeLogin() {
+      document.getElementById("login-section").classList.remove("active");
+    }
+    function handleLogin() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
+        showPrivate();
+      } else if (email && password) {
+        showPrivate();
+      } else {
+        alert("Geçersiz giriş");
+      }
+    }
+    function showPrivate() {
+      document.getElementById("main-content").style.display = "block";
+      const hero = document.getElementById("hero");
+      hero.classList.add("zoom-animation");
+      setTimeout(() => {
+        hero.style.display = "none";
+        document.getElementById("login-section").style.display = "none";
+      }, 3000);
+    }
+    function openTopics(id) {
+      document.querySelectorAll('.topic-box').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
