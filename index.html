@@ -1,128 +1,77 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindGen | Yapay Zeka ile Bankacılık Eğitimi</title>
+  <meta charset="UTF-8">
+  <title>MindGen | Girişli Eğitim Platformu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-      color: #2e3c48;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      margin: 0;
+      padding: 0;
       text-align: center;
     }
-
     header {
-      padding: 50px 20px 20px;
+      background: #1b5e20;
+      color: white;
+      padding: 20px;
+      font-size: 1.5em;
     }
-
-    header img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-top: 20px;
-      color: #4b0082;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin: 15px auto;
-      max-width: 700px;
-    }
-
     .button {
-      background-color: #4b0082;
+      background-color: #388e3c;
       color: white;
       border: none;
-      padding: 12px 30px;
-      font-size: 1.1rem;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 10px;
       cursor: pointer;
-      transition: 0.3s ease;
-      margin-top: 15px;
     }
-
-    .button:hover {
-      background-color: #36005e;
+    .hidden {
+      display: none;
     }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin: 50px auto;
-      max-width: 1100px;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      width: 250px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header img {
-        max-height: 200px;
-      }
+    #site-content {
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://images.unsplash.com/photo-1573164574472-cb89e39749b4" alt="Banka Görseli" />
-    <h1>🧠 MindGen</h1>
-    <p>Yapay zekayla bankacılık eğitimini yeniden tasarlayan platforma hoş geldiniz.</p>
-    <button class="button">Quiz Başlat</button>
-  </header>
 
-  <section class="grid">
-    <div class="card">
-      <h3>🏦 Kredi Risk Analizi</h3>
-      <p>Risk sınıflandırmaları, gecikme analizleri ve izleme metodolojileri.</p>
-    </div>
-    <div class="card">
-      <h3>📊 Finansal Rasyolar</h3>
-      <p>Likidite, kârlılık, kaldıraç gibi temel banka rasyolarının yorumu.</p>
-    </div>
-    <div class="card">
-      <h3>📍 Şube Performansı</h3>
-      <p>Bölge ve şube KPI takipleri, hedef analizleri ve görselleştirme.</p>
-    </div>
-    <div class="card">
-      <h3>🤖 Yapay Zeka ile Eğitim</h3>
-      <p>Kişiselleştirilmiş konu önerileri ve sınav desteğiyle öğrenme.</p>
-    </div>
-  </section>
+  <header>🧠 MindGen – Girişli Eğitim Platformu</header>
 
-  <footer>
-    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
-  </footer>
+  <div id="auth-buttons">
+    <button class="button" onclick="netlifyIdentity.open()">Giriş / Kayıt Ol</button>
+  </div>
+
+  <div id="site-content" class="hidden">
+    <h2>Hoş geldin!</h2>
+    <p>Bu içerik sadece giriş yapmış kullanıcılar için görünür.</p>
+    <button class="button" onclick="netlifyIdentity.logout()">Çıkış Yap</button>
+  </div>
+
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    netlifyIdentity.on('init', user => {
+      if (user) {
+        document.getElementById('site-content').classList.remove('hidden');
+        document.getElementById('auth-buttons').classList.add('hidden');
+      }
+    });
+
+    netlifyIdentity.on('login', user => {
+      document.getElementById('site-content').classList.remove('hidden');
+      document.getElementById('auth-buttons').classList.add('hidden');
+      netlifyIdentity.close();
+    });
+
+    netlifyIdentity.on('logout', () => {
+      document.getElementById('site-content').classList.add('hidden');
+      document.getElementById('auth-buttons').classList.remove('hidden');
+    });
+
+    netlifyIdentity.init();
+  </script>
+
 </body>
 </html>
