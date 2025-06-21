@@ -195,12 +195,21 @@
   </style>
 </head>
 <body>
-  <div class="hero zoom-animation" id="hero">
+  <div class="hero" id="hero">
     <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
     <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
     <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
   </div>
 
-  <!-- other content remains unchanged -->
+  <script>
+    function showPrivate() {
+      document.getElementById("main-content").style.display = "block";
+      const hero = document.getElementById("hero");
+      hero.classList.add("zoom-animation");
+      setTimeout(() => {
+        hero.style.display = "none";
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
