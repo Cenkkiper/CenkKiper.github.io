@@ -17,20 +17,6 @@
       color: white;
       overflow-x: hidden;
     }
-
-    .zoom-animation {
-      animation: zoomInToCorner 3s ease-in-out forwards;
-    }
-
-    @keyframes zoomInToCorner {
-      0% {
-        transform: scale(1) translate(0, 0);
-      }
-      100% {
-        transform: scale(1.2) translate(0, 0);
-      }
-    }
-
     .hero {
       text-align: center;
       margin-top: 52vh;
@@ -58,7 +44,6 @@
     .enter-btn:hover {
       background: #00ffeeaa;
     }
-
     #main-content {
       display: none;
       text-align: center;
@@ -67,115 +52,30 @@
       margin: 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px #00ffee30;
-      animation: fadeIn 1s ease forwards;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .module-buttons, .subtopic-buttons, .resource-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       margin-top: 30px;
     }
-    .module-box {
-      background: rgba(255, 255, 255, 0.05);
+    .module-button, .subtopic-button, .resource-button, .back-button {
+      padding: 15px 30px;
+      font-size: 14px;
+      background: #00ffee10;
+      color: #00ffee;
       border: 1px solid #00ffee;
       border-radius: 10px;
-      padding: 20px;
-      transition: 0.3s ease-in-out;
-      box-shadow: 0 0 10px #00ffee60;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
     }
-    .module-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00ffee;
+    .module-button:hover, .subtopic-button:hover, .resource-button:hover, .back-button:hover {
+      background: #00ffee30;
+      box-shadow: 0 0 10px #00ffee;
     }
-    .module-box h3 {
-      color: #00ffee;
-      margin-bottom: 10px;
-      font-size: 18px;
-      text-transform: uppercase;
-    }
-
-    .topic-list {
+    .hidden {
       display: none;
-      margin-top: 20px;
-    }
-    .topic-item {
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .card-container {
-      display: none;
-      margin-top: 20px;
-    }
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      display: inline-block;
-      width: 100px;
-    }
-    .back-btn {
-      margin-top: 20px;
-      padding: 8px 15px;
-      background: #00ffee;
-      border: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    #login-section {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.95);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00ffee;
-      text-align: center;
-    }
-    #login-section.active {
-      display: block;
-    }
-    #login-section input {
-      display: block;
-      width: 250px;
-      padding: 10px;
-      margin: 10px auto;
-      border: none;
-      border-radius: 5px;
-    }
-    #login-section button[type="submit"] {
-      padding: 10px 20px;
-      background: #00ffee;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .close-btn {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 28px;
-      color: #fff;
-      cursor: pointer;
     }
     footer {
       position: fixed;
@@ -193,7 +93,6 @@
       white-space: nowrap;
       animation: scrollText 60s linear infinite;
     }
-
     @keyframes scrollText {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -201,7 +100,96 @@
   </style>
 </head>
 <body>
-  <!-- Sayfa içeriği buraya gelecek -->
+  <div class="hero" id="hero">
+    <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
+    <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
+    <button class="enter-btn" onclick="showModules()">Giriş Yap</button>
+  </div>
+
+  <div id="main-content" class="hidden">
+    <h2>📚 Bankacılık Eğitim Modülleri</h2>
+    <div class="module-buttons">
+      <button class="module-button" onclick="showSubtopics(0)">BANKACILIKTA YENİ TRENDLER</button>
+      <button class="module-button" onclick="showSubtopics(1)">GENEL EKONOMİ, FİNANS VE BANKACILIK</button>
+      <button class="module-button" onclick="showSubtopics(2)">GÜNCEL BİLGİLER</button>
+    </div>
+  </div>
+
+  <div id="subtopics-section" class="hidden">
+    <h2 id="subtopic-title"></h2>
+    <div class="subtopic-buttons" id="subtopic-buttons"></div>
+    <button class="back-button" onclick="backToModules()">← Modüllere Dön</button>
+  </div>
+
+  <div id="resources-section" class="hidden">
+    <h2 id="resource-title"></h2>
+    <div class="resource-buttons">
+      <button class="resource-button">ÖZET</button>
+      <button class="resource-button">SINAV</button>
+      <button class="resource-button">FLASHCARD</button>
+    </div>
+    <button class="back-button" onclick="backToSubtopics()">← Alt Başlıklara Dön</button>
+  </div>
+
   <footer><span>© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</span></footer>
+
+  <script>
+    const modules = [
+      {
+        title: "BANKACILIKTA YENİ TRENDLER",
+        topics: ["Yeni Oyuncular", "Yeni Teknolojiler", "Yeni Ürün ve Hizmetler", "Yeni Trendler", "Yeni Düzenlemeler"]
+      },
+      {
+        title: "GENEL EKONOMİ, FİNANS VE BANKACILIK",
+        topics: [
+          "Temel Ekonomi", "Para Politikası ve Uygulamaları", "Merkez Bankası ve Para Politikası",
+          "Merkez Bankası, Döviz Kuru ve Döviz Piyasaları", "Bankacılık", "Finansal Sistem ve İşleyişi",
+          "Sermaye Piyasaları", "Menkul Kıymetler", "Temel Para ve Sermaye Piyasası Araçları",
+          "Türev Araçlar", "Davranışsal Finans", "Finansal Okuryazarlık", "Sürdürülebilirlik ve Kurumsal Yönetim"
+        ]
+      },
+      {
+        title: "GÜNCEL BİLGİLER",
+        topics: ["Ekonomik Gelişmeler", "Finansal Düzenlemeler", "Makro Görünüm"]
+      }
+    ];
+
+    function showModules() {
+      document.getElementById('hero').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('hidden');
+    }
+
+    function showSubtopics(index) {
+      const selected = modules[index];
+      document.getElementById('main-content').classList.add('hidden');
+      document.getElementById('subtopics-section').classList.remove('hidden');
+      document.getElementById('subtopic-title').textContent = selected.title;
+      const container = document.getElementById('subtopic-buttons');
+      container.innerHTML = '';
+      selected.topics.forEach(topic => {
+        const btn = document.createElement('button');
+        btn.className = 'subtopic-button';
+        btn.textContent = topic.toUpperCase();
+        btn.onclick = () => showResources(topic);
+        container.appendChild(btn);
+      });
+    }
+
+    function backToModules() {
+      document.getElementById('subtopics-section').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('hidden');
+    }
+
+    function showResources(topic) {
+      document.getElementById('subtopics-section').classList.add('hidden');
+      document.getElementById('resources-section').classList.remove('hidden');
+      document.getElementById('resource-title').textContent = topic.toUpperCase();
+    }
+
+    function backToSubtopics() {
+      document.getElementById('resources-section').classList.add('hidden');
+      document.getElementById('subtopics-section').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
