@@ -73,13 +73,19 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0.9);
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 0 30px #00ffee;
       z-index: 999;
-      animation: fadeIn 0.5s ease-out;
       width: 300px;
+      opacity: 0;
+      transition: all 0.5s ease-out;
+    }
+    #login-section.active {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
     #login-section .close-btn {
       position: absolute;
@@ -130,6 +136,17 @@
       position: fixed;
       bottom: 0;
       left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    footer::after {
+      content: ' © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir. ';
+      display: inline-block;
+      animation: scroll-left 20s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -169,7 +186,7 @@
   <div class="hero">
     <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
     <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
-    <button class="enter-btn" onclick="document.getElementById('login-section').style.display='block'">Giriş Yap</button>
+    <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
   </div>
 
   <main id="main-content">
@@ -179,7 +196,7 @@
   </main>
 
   <main id="login-section">
-    <button class="close-btn" onclick="document.getElementById('login-section').style.display='none'">&times;</button>
+    <button class="close-btn" onclick="hideLogin()">&times;</button>
     <h3 style="color:#00ffee; margin-bottom: 20px;">🔐 Giriş Yapın</h3>
     <form id="login-form">
       <input type="email" id="loginEmail" placeholder="E-posta" required>
@@ -188,12 +205,20 @@
     </form>
   </main>
 
-  <footer>
-    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
-  </footer>
+  <footer></footer>
 
   <script>
     const adminEmails = ["cenkkiper@gmail.com", "aysegul_guncan@hotmail.com"];
+
+    function showLogin() {
+      const login = document.getElementById('login-section');
+      login.classList.add('active');
+    }
+
+    function hideLogin() {
+      const login = document.getElementById('login-section');
+      login.classList.remove('active');
+    }
 
     document.getElementById("login-form").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -202,14 +227,14 @@
 
       if (adminEmails.includes(email)) {
         localStorage.setItem("adminLoggedIn", "true");
-        document.getElementById('login-section').style.display = 'none';
+        hideLogin();
         showPrivate();
         return;
       }
 
       if (email && password) {
         localStorage.setItem("adminLoggedIn", "true");
-        document.getElementById('login-section').style.display = 'none';
+        hideLogin();
         showPrivate();
       } else {
         alert("Lütfen geçerli e-posta ve şifre girin.");
@@ -223,7 +248,7 @@
 
     function showPrivate() {
       document.getElementById("main-content").style.display = "block";
-      document.getElementById("login-section").style.display = "none";
+      document.getElementById("login-section").classList.remove('active');
     }
 
     function showPublic() {
