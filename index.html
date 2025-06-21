@@ -22,8 +22,9 @@
       font-weight: 600;
       letter-spacing: 1px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      position: relative;
     }
     header .logo {
       display: flex;
@@ -33,9 +34,30 @@
       height: 40px;
       margin-right: 10px;
     }
-    header .login-btn {
+    .hero {
+      text-align: center;
+      margin: 120px auto 40px auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 600px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+    }
+    .center-login-btn {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+    .login-btn {
       font-size: 14px;
-      padding: 8px 16px;
+      padding: 10px 18px;
       background-color: #ffffff;
       color: #2e7d32;
       border: none;
@@ -43,23 +65,18 @@
       font-weight: bold;
       cursor: pointer;
     }
-    main#login-section {
-      background-color: rgba(0, 0, 0, 0.6);
-      margin: 120px auto;
+    #login-section {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       padding: 40px;
-      max-width: 400px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
       text-align: center;
-    }
-    main#main-content {
-      background-color: rgba(0, 0, 0, 0.6);
-      margin: 120px auto;
-      padding: 40px;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      text-align: center;
+      z-index: 999;
     }
     button {
       background-color: #2e7d32;
@@ -99,8 +116,15 @@
       <img src="https://zunvan.sirv.com/Images/logo-zunvan-ai.png" alt="MindGen Logo">
       <span>MindGen – Girişli Eğitim Platformu</span>
     </div>
-    <button class="login-btn" onclick="document.getElementById('login-section').scrollIntoView()">Giriş Yap</button>
+    <div class="center-login-btn">
+      <button class="login-btn" onclick="document.getElementById('login-section').style.display='block'">Giriş Yap</button>
+    </div>
   </header>
+
+  <div class="hero">
+    <h1>📊 Bankacılık ve Yapay Zeka Eğitimi</h1>
+    <p>Giriş yaptıktan sonra eğitim modüllerine ulaşabilirsiniz.</p>
+  </div>
 
   <main id="main-content">
     <h2>📚 Bankacılık Eğitim Modülleri</h2>
@@ -131,12 +155,14 @@
 
       if (adminEmails.includes(email)) {
         localStorage.setItem("adminLoggedIn", "true");
+        document.getElementById('login-section').style.display = 'none';
         showPrivate();
         return;
       }
 
       if (email && password) {
         localStorage.setItem("adminLoggedIn", "true");
+        document.getElementById('login-section').style.display = 'none';
         showPrivate();
       } else {
         alert("Lütfen geçerli e-posta ve şifre girin.");
@@ -155,7 +181,6 @@
 
     function showPublic() {
       document.getElementById("main-content").style.display = "none";
-      document.getElementById("login-section").style.display = "block";
     }
 
     document.addEventListener("DOMContentLoaded", () => {
