@@ -4,185 +4,132 @@
   <meta charset="UTF-8">
   <title>MindGen – Girişli Eğitim Platformu</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: url('https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/3f9846bb-4adf-4ba0-a683-f2c7d09d931d.jpg') no-repeat center center fixed;
-      background-size: cover;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      color: #ffffff;
-      min-height: 100vh;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-    }
-    header {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 16px 40px;
-      font-size: 22px;
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/3f9846bb-4adf-4ba0-a683-f2c7d09d931d.jpg') center/cover no-repeat fixed;
+      color: #00ffcc;
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      color: white;
-      flex-wrap: wrap;
+      text-align: center;
     }
-    header .logo {
-      display: flex;
-      align-items: center;
+    .logo {
+      margin-top: 40px;
     }
-    header .logo img {
-      height: 36px;
-      margin-right: 12px;
+    .logo img {
+      height: 100px;
     }
-    .nav-right {
-      display: flex;
-      gap: 12px;
+    .hero {
+      margin: 20px auto;
+      padding: 40px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 20px;
+      max-width: 800px;
     }
-    .login-btn {
-      font-size: 14px;
-      padding: 10px 24px;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 30px;
+    .hero h1 {
+      font-size: 60px;
+      font-weight: 800;
+      text-shadow: 2px 2px 10px #00ffcc;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .enter-btn {
+      margin-top: 20px;
+      padding: 15px 40px;
+      border: 2px solid #00ffcc;
+      background: transparent;
+      color: #00ffcc;
+      border-radius: 25px;
+      font-size: 18px;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .login-btn:hover {
-      background-color: #1b5e20;
-    }
-    .hero {
-      text-align: center;
-      margin: 160px auto 40px auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 60px 30px;
-      border-radius: 20px;
-      max-width: 700px;
-      backdrop-filter: blur(6px);
-    }
-    .hero h1 {
-      font-size: 52px;
-      font-family: 'DM Serif Display', serif;
-      margin-bottom: 20px;
-      color: white;
-    }
-    .hero p {
-      font-size: 22px;
-      color: white;
+    .enter-btn:hover {
+      background: #00ffcc;
+      color: #000;
     }
     #login-section {
       display: none;
-      background-color: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.95);
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffcc;
       z-index: 999;
     }
     #login-section .close-btn {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      background: transparent;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: #00ffcc;
+      background: none;
       border: none;
-      font-size: 28px;
-      color: white;
       cursor: pointer;
     }
-    #login-form input {
-      padding: 12px;
-      margin: 10px 0;
+    #login-form input, #login-form button {
       width: 100%;
-      border: none;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
       border-radius: 8px;
-      font-size: 15px;
+      border: 1px solid #00ffcc;
     }
     #login-form button {
-      background-color: #2e7d32;
-      color: white;
-      padding: 12px 24px;
-      border: none;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      margin-top: 20px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 8px;
-      width: 100%;
+      transition: all 0.3s ease;
+    }
+    #login-form button:hover {
+      background: #000;
+      color: #00ffcc;
+      border-color: #00ffcc;
     }
     #main-content {
       display: none;
+      background: rgba(0, 0, 0, 0.7);
       padding: 40px;
-      background-color: rgba(0,0,0,0.5);
+      margin: 20px auto;
+      max-width: 800px;
       border-radius: 12px;
-      margin: 40px auto;
-      max-width: 700px;
     }
     footer {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      font-size: 13px;
+      padding: 10px;
       text-align: center;
-      color: #ddd;
-      position: fixed;
-      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: #888;
+      font-size: 12px;
       width: 100%;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        text-align: center;
-      }
-      .hero {
-        margin: 100px 20px 20px 20px;
-        padding: 30px 20px;
-        max-width: 95vw;
-      }
-      .hero h1 {
-        font-size: 32px;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-      .login-btn {
-        align-self: center;
-      }
-      footer {
-        font-size: 11px;
-        padding: 12px;
-      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/ChatGPT%20Image%208%20Haz%202025%2001_02_23.png" alt="MindGen Logo">
-      <span>MindGen – Girişli Eğitim Platformu</span>
-    </div>
-    <div class="nav-right">
-      <button class="login-btn" onclick="document.getElementById('login-section').style.display='block'">Giriş Yap</button>
-    </div>
-  </header>
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/ChatGPT%20Image%208%20Haz%202025%2001_02_23.png" alt="MindGen Logo">
+  </div>
 
   <div class="hero">
-    <h1>📊 Bankacılık ve Yapay Zeka Eğitimi</h1>
+    <h1>Bankacılık ve Yapay Zeka Eğitimi</h1>
     <p>Giriş yaptıktan sonra eğitim modüllerine ulaşabilirsiniz.</p>
+    <button class="enter-btn" onclick="document.getElementById('login-section').style.display='block'">Giriş Yap</button>
   </div>
 
   <main id="main-content">
@@ -193,10 +140,10 @@
 
   <main id="login-section">
     <button class="close-btn" onclick="document.getElementById('login-section').style.display='none'">&times;</button>
-    <h3 style="margin-bottom: 30px; font-family: 'DM Serif Display', serif; font-size: 24px; color: white;">🔐 Giriş Yapın</h3>
+    <h3 style="color:#00ffcc; margin-bottom: 20px;">🔐 Giriş Yapın</h3>
     <form id="login-form">
-      <input type="email" id="loginEmail" placeholder="E-posta" required><br>
-      <input type="password" id="loginPassword" placeholder="Şifre"><br>
+      <input type="email" id="loginEmail" placeholder="E-posta" required>
+      <input type="password" id="loginPassword" placeholder="Şifre">
       <button type="submit">Giriş Yap</button>
     </form>
   </main>
