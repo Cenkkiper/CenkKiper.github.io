@@ -22,9 +22,10 @@
       align-items: center;
       text-align: center;
       padding-top: 640px;
+      animation: backgroundFade 10s ease-in-out infinite alternate;
     }
     .hero {
-      animation: fadeIn 2s ease-in-out;
+      animation: fadeIn 2s ease-in-out, floatY 4s ease-in-out infinite;
       margin-bottom: auto;
     }
     .hero h1 {
@@ -35,11 +36,13 @@
       text-shadow: 0 0 12px #00ffee;
       text-transform: uppercase;
       letter-spacing: 1px;
+      animation: glowText 3s ease-in-out infinite alternate;
     }
     .hero p {
       font-size: 16px;
       color: #ccc;
       margin-bottom: 20px;
+      animation: fadeIn 3s ease-in-out;
     }
     .enter-btn {
       margin-top: 10px;
@@ -135,6 +138,18 @@
       0% { box-shadow: 0 0 10px #00ffee; }
       50% { box-shadow: 0 0 25px #00ffee; }
       100% { box-shadow: 0 0 10px #00ffee; }
+    }
+    @keyframes backgroundFade {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.1); }
+    }
+    @keyframes glowText {
+      0% { text-shadow: 0 0 10px #00ffee; }
+      100% { text-shadow: 0 0 25px #00ffee; }
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     @media (max-width: 768px) {
       body {
