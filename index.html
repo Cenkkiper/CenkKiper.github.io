@@ -198,25 +198,59 @@
   <div class="hero" id="hero">
     <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
     <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
-    <button class="enter-btn" onclick="showPrivate()">Giriş Yap</button>
+    <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
+  </div>
+
+  <div id="login-section">
+    <button class="close-btn" onclick="closeLogin()">×</button>
+    <h2>Giriş Yap</h2>
+    <input type="email" id="email" placeholder="Email adresi">
+    <input type="password" id="password" placeholder="Şifre">
+    <button type="submit" onclick="handleLogin()">Gönder</button>
   </div>
 
   <div id="main-content">
     <h2>Bankacılık Eğitim Modülleri</h2>
     <div class="module-grid">
-      <!-- Modül kutuları buraya eklenecek -->
+      <div class="module-box">
+        <h3>Yeni Trendler</h3>
+        <ul>
+          <li>Yeni Oyuncular</li>
+          <li>Yeni Teknolojiler</li>
+          <li>Yeni Ürün ve Hizmetler</li>
+          <li>Yeni Düzenlemeler</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <footer data-text="© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir."></footer>
 
   <script>
+    function showLogin() {
+      document.getElementById("login-section").classList.add("active");
+    }
+    function closeLogin() {
+      document.getElementById("login-section").classList.remove("active");
+    }
+    function handleLogin() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      if ((email === "admin@mindgen.com" || email === "ays@mindgen.com") && password === "") {
+        showPrivate();
+      } else if (email && password) {
+        showPrivate();
+      } else {
+        alert("Geçersiz giriş");
+      }
+    }
     function showPrivate() {
       document.getElementById("main-content").style.display = "block";
       const hero = document.getElementById("hero");
       hero.classList.add("zoom-animation");
       setTimeout(() => {
         hero.style.display = "none";
+        document.getElementById("login-section").style.display = "none";
       }, 3000);
     }
   </script>
