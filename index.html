@@ -36,7 +36,7 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    #admin-form, #user-form {
+    #login-section {
       margin-top: 30px;
     }
     #main-content {
@@ -59,6 +59,7 @@
     <h3>🔑 Giriş Yap</h3>
     <form id="login-form">
       <input type="email" id="loginEmail" placeholder="E-posta" required><br>
+      <input type="password" id="loginPassword" placeholder="Şifre (admin için boş bırakılabilir)"><br>
       <button type="submit">Giriş Yap</button>
     </form>
   </main>
@@ -72,14 +73,23 @@
 
     document.getElementById("login-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      const email = document.getElementById("loginEmail").value;
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
 
-      // Admin e-posta ile şifresiz giriş
+      // Eğer admin e-postası ise şifresiz girişe izin ver
       if (adminEmails.includes(email)) {
         localStorage.setItem("adminLoggedIn", "true");
         showPrivate();
+        return;
+      }
+
+      // Diğer kullanıcılar için şifre kontrolü
+      if (email && password) {
+        // Bu kısımda ileride gerçek kimlik doğrulama yapılabilir
+        localStorage.setItem("adminLoggedIn", "true");
+        showPrivate();
       } else {
-        alert("Sadece kayıtlı admin e-posta ile giriş yapılabilir.");
+        alert("Lütfen geçerli e-posta ve şifre girin.");
       }
     });
 
