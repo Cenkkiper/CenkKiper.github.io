@@ -20,7 +20,7 @@
 
     .hero {
       text-align: center;
-      margin-top: 28vh;
+      margin-top: 38vh;
     }
     .hero h1 {
       font-size: 2.5em;
@@ -54,6 +54,12 @@
       margin: 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px #00ffee30;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .module-grid {
