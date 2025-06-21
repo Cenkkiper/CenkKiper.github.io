@@ -182,8 +182,7 @@
       white-space: nowrap;
       overflow: hidden;
     }
-    footer::before {
-      content: attr(data-text);
+    .scrolling-text {
       display: inline-block;
       animation: scrollText 60s linear infinite;
     }
@@ -224,7 +223,7 @@
     </div>
   </div>
 
-  <footer data-text="© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir."></footer>
+  <footer><span class="scrolling-text">© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</span></footer>
 
   <script>
     function showLogin() {
