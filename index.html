@@ -166,8 +166,15 @@
       font-size: 12px;
       background: rgba(0, 0, 0, 0.4);
       color: #ccc;
-      animation: scrollText 15s linear infinite;
+      white-space: nowrap;
+      overflow: hidden;
     }
+    footer::before {
+      content: attr(data-text);
+      display: inline-block;
+      animation: scrollText 30s linear infinite;
+    }
+
     @keyframes scrollText {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -197,7 +204,7 @@
     </form>
   </main>
 
-  <footer>
+  <footer data-text="© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.">
     © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
   </footer>
 
