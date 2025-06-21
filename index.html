@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindGen | Yapay Zeka ile Öğren</title>
+  <title>MindGen | Bankacılık Eğitim Platformu</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f5f1ff, #e0e5ff);
-      color: #333;
-      text-align: center;
+      background: linear-gradient(to right, #f8f9fd, #e6eaf5);
       margin: 0;
-      padding: 0;
+      color: #2b2d42;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
-      padding: 50px 20px;
+      padding: 60px 20px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 3.2em;
       color: #4b0082;
+      margin-bottom: 0.2em;
     }
 
     p {
       font-size: 1.2em;
-      margin-bottom: 20px;
+      color: #444;
     }
 
     .button {
@@ -37,21 +37,21 @@
       font-size: 1em;
       border: none;
       border-radius: 8px;
+      margin: 20px 10px;
       cursor: pointer;
-      margin: 10px;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      background-color: #360062;
+      background-color: #370062;
     }
 
     .form-group {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-      gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 30px;
+      gap: 10px;
     }
 
     input[type="email"] {
@@ -63,61 +63,67 @@
     }
 
     .topics {
-      margin-top: 40px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
 
     .card {
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     footer {
       margin-top: 60px;
+      padding-bottom: 40px;
       font-size: 0.9em;
       color: #777;
     }
 
     @media (max-width: 600px) {
-      .topics {
-        grid-template-columns: 1fr;
+      h1 {
+        font-size: 2.2em;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🧠 <strong>MindGen</strong></h1>
-    <p>Yapay zekayla öğrenmeyi ve üretmeyi birleştiren platforma hoş geldiniz!</p>
+    <h1>🧠 MindGen</h1>
+    <p>Yapay zekayla desteklenen bankacılık eğitim platformuna hoş geldiniz.</p>
     <p>Bu site GitHub Pages ile yayınlanmaktadır. 🚀</p>
 
-    <button class="button">Quiz Başlat</button>
+    <button class="button" onclick="alert('Quiz özelliği yakında eklenecek!')">Quiz Başlat</button>
 
     <div class="form-group">
       <input type="email" placeholder="E-posta adresiniz" />
-      <button class="button">Kaydol</button>
+      <button class="button" onclick="alert('Kaydınız alındı (demo)!')">Kaydol</button>
     </div>
 
     <div class="topics">
       <div class="card">
-        <h3>🧠 Yapay Zeka Nedir?</h3>
-        <p>Temel kavramlar, tarihçesi ve kullanım alanları.</p>
+        <h3>🧾 Kredi Türleri</h3>
+        <p>Ticari, bireysel, tarımsal krediler ve detayları.</p>
       </div>
       <div class="card">
-        <h3>📊 Makine Öğrenimi</h3>
-        <p>Denetimli, denetimsiz ve pekiştirmeli öğrenme.</p>
+        <h3>📉 Risk İzleme Kriterleri</h3>
+        <p>Yakın izleme, takip ve erken uyarı kriterleri.</p>
       </div>
       <div class="card">
-        <h3>📌 Derin Öğrenme</h3>
-        <p>Sinir ağları, CNN, RNN gibi modeller.</p>
+        <h3>🏦 Takip Süreci</h3>
+        <p>Donuk alacak aşamaları, gecikme günleri, icra.</p>
       </div>
       <div class="card">
         <h3>❓ Örnek Quiz</h3>
-        <p>"Yapay zeka öğrenmede hangisi denetimli öğrenme türüdür?"</p>
+        <p>“90 günü aşan kredi hangi gruba girer?”</p>
       </div>
     </div>
 
