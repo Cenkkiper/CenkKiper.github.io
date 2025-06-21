@@ -22,40 +22,30 @@
       align-items: center;
       text-align: center;
     }
-    .logo {
-      margin-top: 40px;
+    .hero {
+      margin-top: 60px;
       animation: fadeIn 2s ease-in-out;
     }
-    .logo img {
-      height: 120px;
-      width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(0, 255, 204, 0.7);
-      background: rgba(0, 0, 0, 0.4);
-      padding: 10px;
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #00ffee;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px #00ffee;
     }
-    .hero {
-      margin: 30px auto;
-      padding: 60px;
-      background: none;
-      backdrop-filter: none;
-      border: none;
-      box-shadow: none;
-      border-radius: 25px;
-      max-width: 800px;
-      animation: fadeIn 2.5s ease-in-out;
-    }
-    .hero h1, .hero p {
-      display: none;
+    .hero p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 20px;
     }
     .enter-btn {
-      margin-top: 30px;
-      padding: 15px 50px;
+      margin-top: 10px;
+      padding: 12px 40px;
       background: linear-gradient(to right, #00ffee, #00ccff);
       color: #000;
       border: none;
       border-radius: 40px;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.4s ease-in-out;
@@ -74,17 +64,18 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      padding: 40px;
-      border-radius: 20px;
+      padding: 30px;
+      border-radius: 15px;
       box-shadow: 0 0 30px #00ffee;
       z-index: 999;
       animation: fadeIn 0.5s ease-out;
+      width: 300px;
     }
     #login-section .close-btn {
       position: absolute;
       top: 10px;
       right: 20px;
-      font-size: 30px;
+      font-size: 28px;
       color: #00ffee;
       background: none;
       border: none;
@@ -93,9 +84,9 @@
     #login-form input, #login-form button {
       width: 100%;
       margin: 10px 0;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
       border: 1px solid #00ffee;
     }
     #login-form button {
@@ -134,11 +125,9 @@
   </style>
 </head>
 <body>
-  <div class="logo">
-    <img src="https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/ChatGPT%20Image%208%20Haz%202025%2001_02_23.png" alt="MindGen Logo">
-  </div>
-
   <div class="hero">
+    <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
+    <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
     <button class="enter-btn" onclick="document.getElementById('login-section').style.display='block'">Giriş Yap</button>
   </div>
 
