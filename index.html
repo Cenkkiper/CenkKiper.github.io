@@ -6,99 +6,124 @@
   <title>MindGen | Yapay Zeka ile Öğren</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f5f7ff, #e5e5ff);
+      background: linear-gradient(to right, #f5f1ff, #e0e5ff);
       color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
-    header {
-      text-align: center;
-      margin-top: 30px;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 50px 20px;
     }
 
     h1 {
       font-size: 3em;
       color: #4b0082;
-      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.2em;
-      max-width: 600px;
-      margin: 10px auto;
+      margin-bottom: 20px;
     }
 
     .button {
       background-color: #4b0082;
       color: white;
       padding: 15px 30px;
-      font-size: 1.1em;
+      font-size: 1em;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 30px;
-      text-decoration: none;
-      transition: 0.3s;
+      margin: 10px;
+      transition: background 0.3s ease;
     }
 
     .button:hover {
-      background-color: #2e005e;
+      background-color: #360062;
     }
 
-    .email-form {
-      margin-top: 30px;
+    .form-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .email-form input {
+    input[type="email"] {
       padding: 10px;
       font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #ccc;
       width: 250px;
-      border: 1px solid #999;
-      border-radius: 5px;
     }
 
-    .email-form button {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin-left: 10px;
-      background-color: #4b0082;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+    .topics {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     footer {
-      text-align: center;
+      margin-top: 60px;
       font-size: 0.9em;
-      color: #555;
-      margin-bottom: 20px;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .topics {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🧠 MindGen</h1>
+  <div class="container">
+    <h1>🧠 <strong>MindGen</strong></h1>
     <p>Yapay zekayla öğrenmeyi ve üretmeyi birleştiren platforma hoş geldiniz!</p>
-    <p>Bu site GitHub Pages ile yayınlanmaktadır 🚀</p>
-    <a href="quiz.html" class="button">Quiz Başlat</a>
+    <p>Bu site GitHub Pages ile yayınlanmaktadır. 🚀</p>
 
-    <div class="email-form">
+    <button class="button">Quiz Başlat</button>
+
+    <div class="form-group">
       <input type="email" placeholder="E-posta adresiniz" />
-      <button>Kaydol</button>
+      <button class="button">Kaydol</button>
     </div>
-  </header>
 
-  <footer>
-    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
-  </footer>
+    <div class="topics">
+      <div class="card">
+        <h3>🧠 Yapay Zeka Nedir?</h3>
+        <p>Temel kavramlar, tarihçesi ve kullanım alanları.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Makine Öğrenimi</h3>
+        <p>Denetimli, denetimsiz ve pekiştirmeli öğrenme.</p>
+      </div>
+      <div class="card">
+        <h3>📌 Derin Öğrenme</h3>
+        <p>Sinir ağları, CNN, RNN gibi modeller.</p>
+      </div>
+      <div class="card">
+        <h3>❓ Örnek Quiz</h3>
+        <p>"Yapay zeka öğrenmede hangisi denetimli öğrenme türüdür?"</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</p>
+    </footer>
+  </div>
 </body>
 </html>
