@@ -24,6 +24,7 @@
     }
     .logo {
       margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
     }
     .logo img {
       height: 120px;
@@ -42,6 +43,7 @@
       box-shadow: 0 0 25px #00ffee, 0 0 60px rgba(0, 255, 255, 0.3);
       border-radius: 25px;
       max-width: 800px;
+      animation: fadeIn 2.5s ease-in-out;
     }
     .hero h1 {
       font-size: 60px;
@@ -58,20 +60,21 @@
     .enter-btn {
       margin-top: 30px;
       padding: 15px 50px;
-      background: transparent;
-      color: #00ffee;
-      border: 2px solid #00ffee;
+      background: linear-gradient(to right, #00ffee, #00ccff);
+      color: #000;
+      border: none;
       border-radius: 40px;
       font-size: 20px;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.4s ease-in-out;
-      box-shadow: 0 0 15px #00ffee, inset 0 0 10px #00ffee;
+      box-shadow: 0 0 25px #00ffee, 0 0 45px #00ccff, inset 0 0 10px #00ffee;
     }
     .enter-btn:hover {
+      transform: scale(1.1);
       background: #00ffee;
       color: #000;
-      box-shadow: 0 0 25px #00ffee, 0 0 40px #00ffee;
+      box-shadow: 0 0 35px #00ffee, 0 0 70px #00ffee;
     }
     #login-section {
       display: none;
@@ -84,6 +87,7 @@
       border-radius: 20px;
       box-shadow: 0 0 30px #00ffee;
       z-index: 999;
+      animation: fadeIn 0.5s ease-out;
     }
     #login-section .close-btn {
       position: absolute;
@@ -131,6 +135,10 @@
       color: #aaa;
       font-size: 12px;
       width: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
