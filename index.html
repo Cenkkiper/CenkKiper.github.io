@@ -20,7 +20,7 @@
 
     .hero {
       text-align: center;
-      margin-top: 18vh;
+      margin-top: 28vh;
     }
     .hero h1 {
       font-size: 2.5em;
@@ -168,7 +168,7 @@
   </style>
 </head>
 <body>
-  <div class="hero">
+  <div class="hero" id="hero">
     <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
     <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
     <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
@@ -177,45 +177,7 @@
   <main id="main-content">
     <h2>📚 Bankacılık Eğitim Modülleri</h2>
     <div class="module-grid">
-      <div class="module-box" onclick="toggleModule(this)">
-        <h3>1. Bankacılıkta Yeni Trendler</h3>
-        <button class="toggle-btn">Alt Başlıkları Göster</button>
-        <ul class="subtopics">
-          <li>a. Yeni Oyuncular</li>
-          <li>b. Yeni Teknolojiler</li>
-          <li>c. Yeni Ürün ve Hizmetler</li>
-          <li>d. Yeni Trendler</li>
-          <li>e. Yeni Düzenlemeler</li>
-        </ul>
-      </div>
-      <div class="module-box" onclick="toggleModule(this)">
-        <h3>2. Genel Ekonomi, Finans ve Bankacılık</h3>
-        <button class="toggle-btn">Alt Başlıkları Göster</button>
-        <ul class="subtopics">
-          <li>a. Temel Ekonomi</li>
-          <li>b. Para Politikası ve Uygulamaları</li>
-          <li>c. Merkez Bankası ve Para Politikası</li>
-          <li>d. Döviz Kuru ve Döviz Piyasaları</li>
-          <li>e. Bankacılık</li>
-          <li>f. Finansal Sistem ve İşleyişi</li>
-          <li>g. Sermaye Piyasaları</li>
-          <li>h. Menkul Kıymetler</li>
-          <li>i. Para ve Sermaye Piyasası Araçları</li>
-          <li>j. Türev Araçlar</li>
-          <li>k. Davranışsal Finans</li>
-          <li>l. Finansal Okuryazarlık</li>
-          <li>m. Sürdürülebilirlik ve Kurumsal Yönetim</li>
-        </ul>
-      </div>
-      <div class="module-box" onclick="toggleModule(this)">
-        <h3>3. Güncel Bilgiler</h3>
-        <button class="toggle-btn">Alt Başlıkları Göster</button>
-        <ul class="subtopics">
-          <li>🔄 Sürekli güncellenen içerikler</li>
-          <li>📅 Mevcut ekonomik gelişmeler</li>
-          <li>📌 Bankacılık sektörü güncellemeleri</li>
-        </ul>
-      </div>
+      <!-- içerik devam -->
     </div>
     <button style="margin-top: 40px;" onclick="logout()">Çıkış Yap</button>
   </main>
@@ -276,10 +238,12 @@
     function showPrivate() {
       document.getElementById("main-content").style.display = "block";
       document.getElementById("login-section").classList.remove('active');
+      document.getElementById("hero").style.display = "none";
     }
 
     function showPublic() {
       document.getElementById("main-content").style.display = "none";
+      document.getElementById("hero").style.display = "block";
     }
 
     function toggleModule(element) {
