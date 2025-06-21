@@ -88,6 +88,7 @@
       padding: 20px;
       transition: 0.3s ease-in-out;
       box-shadow: 0 0 10px #00ffee60;
+      cursor: pointer;
     }
     .module-box:hover {
       transform: scale(1.05);
@@ -99,33 +100,21 @@
       font-size: 18px;
       text-transform: uppercase;
     }
-    .module-box ul {
-      list-style: none;
-      padding-left: 0;
-      font-size: 14px;
-    }
-    .module-box ul li::before {
-      content: '• ';
-      color: #00ffee;
-    }
-    .subtopics {
+
+    .topic-box {
       display: none;
-      padding-top: 10px;
+      margin-top: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
-    .module-box.open .subtopics {
-      display: block;
-    }
-    .toggle-btn {
-      background: transparent;
-      border: 1px solid #00ffee;
-      color: #00ffee;
-      padding: 5px 10px;
+    .topic-box .card {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      margin: 10px;
       border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .toggle-btn:hover {
-      background: #00ffee20;
+      display: inline-block;
+      width: 100px;
     }
 
     #login-section {
@@ -211,42 +200,30 @@
   <div id="main-content">
     <h2>Bankacılık Eğitim Modülleri</h2>
     <div class="module-grid">
-      <div class="module-box">
+      <div class="module-box" onclick="openTopics('trendler')">
         <h3>Bankacılıkta Yeni Trendler</h3>
-        <ul>
-          <li>Yeni Oyuncular</li>
-          <li>Yeni Teknolojiler</li>
-          <li>Yeni Ürün ve Hizmetler</li>
-          <li>Yeni Trendler</li>
-          <li>Yeni Düzenlemeler</li>
-        </ul>
       </div>
-      <div class="module-box">
+      <div class="module-box" onclick="openTopics('ekonomi')">
         <h3>Genel Ekonomi, Finans ve Bankacılık</h3>
-        <ul>
-          <li>Temel Ekonomi</li>
-          <li>Para Politikası ve Uygulamaları</li>
-          <li>Merkez Bankası ve Para Politikası</li>
-          <li>Merkez Bankası, Döviz Kuru ve Döviz Piyasaları</li>
-          <li>Bankacılık</li>
-          <li>Finansal Sistem ve İşleyişi</li>
-          <li>Sermaye Piyasaları</li>
-          <li>Menkul Kıymetler</li>
-          <li>Temel Para ve Sermaye Piyasası Araçları</li>
-          <li>Türev Araçlar</li>
-          <li>Davranışsal Finans</li>
-          <li>Finansal Okuryazarlık</li>
-          <li>Sürdürülebilirlik ve Kurumsal Yönetim</li>
-        </ul>
       </div>
-      <div class="module-box">
+      <div class="module-box" onclick="openTopics('guncel')">
         <h3>Güncel Bilgiler</h3>
-        <ul>
-          <li>Güncel Ekonomik Gelişmeler</li>
-          <li>Yasal Düzenlemeler</li>
-          <li>Makroekonomik Göstergeler</li>
-        </ul>
       </div>
+    </div>
+    <div id="trendler" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
+    </div>
+    <div id="ekonomi" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
+    </div>
+    <div id="guncel" class="topic-box">
+      <div class="card">ÖZET</div>
+      <div class="card">SINAV</div>
+      <div class="card">FLASHCARD</div>
     </div>
   </div>
 
@@ -278,6 +255,10 @@
         hero.style.display = "none";
         document.getElementById("login-section").style.display = "none";
       }, 3000);
+    }
+    function openTopics(id) {
+      document.querySelectorAll('.topic-box').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
     }
   </script>
 </body>
