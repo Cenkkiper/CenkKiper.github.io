@@ -13,7 +13,7 @@
     }
     body {
       font-family: 'Orbitron', sans-serif;
-      background: url('https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/3f9846bb-4adf-4ba0-a683-f2c7d09d931d.jpg') center/cover no-repeat fixed;
+      background: url('https://images.unsplash.com/photo-1605902711622-cfb43c4437d2?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
       color: #00ffcc;
       height: 100vh;
       display: flex;
@@ -26,40 +26,51 @@
       margin-top: 40px;
     }
     .logo img {
-      height: 100px;
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
     }
     .hero {
-      margin: 20px auto;
-      padding: 40px;
-      background: rgba(0,0,0,0.6);
+      margin: 30px auto;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(0, 255, 204, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
       border-radius: 20px;
       max-width: 800px;
     }
     .hero h1 {
-      font-size: 60px;
+      font-size: 58px;
       font-weight: 800;
-      text-shadow: 2px 2px 10px #00ffcc;
-      margin-bottom: 20px;
+      text-shadow: 0 0 15px #00ffee, 0 0 30px #00ffee;
+      margin-bottom: 25px;
     }
     .hero p {
       font-size: 20px;
       font-weight: 500;
+      text-shadow: 0 0 10px #00ffee;
     }
     .enter-btn {
-      margin-top: 20px;
+      margin-top: 30px;
       padding: 15px 40px;
-      border: 2px solid #00ffcc;
       background: transparent;
-      color: #00ffcc;
-      border-radius: 25px;
+      color: #00ffee;
+      border: 2px solid #00ffee;
+      border-radius: 30px;
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 0 10px #00ffee, inset 0 0 10px #00ffee;
     }
     .enter-btn:hover {
-      background: #00ffcc;
+      background: #00ffee;
       color: #000;
+      box-shadow: 0 0 20px #00ffee, 0 0 30px #00ffee;
     }
     #login-section {
       display: none;
