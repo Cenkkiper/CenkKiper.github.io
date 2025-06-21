@@ -20,7 +20,7 @@
 
     .hero {
       text-align: center;
-      margin-top: 38vh;
+      margin-top: 52vh;
     }
     .hero h1 {
       font-size: 2.5em;
@@ -84,6 +84,7 @@
       color: #00ffee;
       margin-bottom: 10px;
       font-size: 18px;
+      text-transform: uppercase;
     }
     .module-box ul {
       list-style: none;
@@ -182,9 +183,7 @@
 
   <main id="main-content">
     <h2>📚 Bankacılık Eğitim Modülleri</h2>
-    <div class="module-grid">
-      <!-- içerik devam -->
-    </div>
+    <div class="module-grid" id="moduleGrid"></div>
     <button style="margin-top: 40px;" onclick="logout()">Çıkış Yap</button>
   </main>
 
@@ -206,13 +205,11 @@
     const adminEmails = ["cenkkiper@gmail.com", "aysegul_guncan@hotmail.com"];
 
     function showLogin() {
-      const login = document.getElementById('login-section');
-      login.classList.add('active');
+      document.getElementById('login-section').classList.add('active');
     }
 
     function hideLogin() {
-      const login = document.getElementById('login-section');
-      login.classList.remove('active');
+      document.getElementById('login-section').classList.remove('active');
     }
 
     document.getElementById("login-form").addEventListener("submit", function(e) {
@@ -220,14 +217,7 @@
       const email = document.getElementById("loginEmail").value.trim();
       const password = document.getElementById("loginPassword").value;
 
-      if (adminEmails.includes(email)) {
-        localStorage.setItem("adminLoggedIn", "true");
-        hideLogin();
-        showPrivate();
-        return;
-      }
-
-      if (email && password) {
+      if (adminEmails.includes(email) || (email && password)) {
         localStorage.setItem("adminLoggedIn", "true");
         hideLogin();
         showPrivate();
@@ -245,6 +235,7 @@
       document.getElementById("main-content").style.display = "block";
       document.getElementById("login-section").classList.remove('active');
       document.getElementById("hero").style.display = "none";
+      generateModules();
     }
 
     function showPublic() {
@@ -255,11 +246,40 @@
     function toggleModule(element) {
       element.classList.toggle("open");
       const btn = element.querySelector(".toggle-btn");
-      if (element.classList.contains("open")) {
-        btn.textContent = "Alt Başlıkları Gizle";
-      } else {
-        btn.textContent = "Alt Başlıkları Göster";
-      }
+      btn.textContent = element.classList.contains("open") ? "Alt Başlıkları Gizle" : "Alt Başlıkları Göster";
+    }
+
+    function generateModules() {
+      const data = [
+        {
+          title: "Bankacılıkta Yeni Trendler",
+          topics: ["Yeni Oyuncular", "Yeni Teknolojiler", "Yeni Ürün ve Hizmetler", "Yeni Trendler", "Yeni Düzenlemeler"]
+        },
+        {
+          title: "Genel Ekonomi, Finans ve Bankacılık",
+          topics: [
+            "Temel Ekonomi", "Para Politikası ve Uygulamaları", "Merkez Bankası ve Para Politikası",
+            "Merkez Bankası, Döviz Kuru ve Döviz Piyasaları", "Bankacılık", "Finansal Sistem ve İşleyişi",
+            "Sermaye Piyasaları", "Menkul Kıymetler", "Temel Para ve Sermaye Piyasası Araçları",
+            "Türev Araçlar", "Davranışsal Finans", "Finansal Okuryazarlık", "Sürdürülebilirlik ve Kurumsal Yönetim"
+          ]
+        },
+        {
+          title: "Güncel Bilgiler",
+          topics: []
+        }
+      ];
+      const container = document.getElementById("moduleGrid");
+      container.innerHTML = "";
+      data.forEach(mod => {
+        const box = document.createElement("div");
+        box.className = "module-box";
+        box.innerHTML = `<h3>${mod.title}</h3>
+          <button class="toggle-btn">Alt Başlıkları Göster</button>
+          <ul class="subtopics">${mod.topics.map(t => `<li>${t.toUpperCase()}</li>`).join('')}</ul>`;
+        box.querySelector(".toggle-btn").addEventListener("click", () => toggleModule(box));
+        container.appendChild(box);
+      });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
