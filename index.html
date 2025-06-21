@@ -3,78 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindGen | Bankacılık Eğitim Platformu</title>
+  <title>MindGen | Yapay Zeka ile Bankacılık Eğitimi</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f8f9fd, #e6eaf5);
       margin: 0;
-      color: #2b2d42;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      color: #2e3c48;
       text-align: center;
     }
 
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    header img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
     h1 {
-      font-size: 3.2em;
+      font-size: 2.8rem;
+      margin-top: 20px;
       color: #4b0082;
-      margin-bottom: 0.2em;
     }
 
     p {
-      font-size: 1.2em;
-      color: #444;
+      font-size: 1.2rem;
+      margin: 15px auto;
+      max-width: 700px;
     }
 
     .button {
       background-color: #4b0082;
       color: white;
-      padding: 15px 30px;
-      font-size: 1em;
       border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
       border-radius: 8px;
-      margin: 20px 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
+      margin-top: 15px;
     }
 
     .button:hover {
-      background-color: #370062;
+      background-color: #36005e;
     }
 
-    .form-group {
+    .grid {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 30px;
-      gap: 10px;
-    }
-
-    input[type="email"] {
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      width: 250px;
-    }
-
-    .topics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+      justify-content: center;
+      gap: 20px;
+      margin: 50px auto;
+      max-width: 1100px;
+      padding: 20px;
     }
 
     .card {
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
+      width: 250px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
 
     .card:hover {
@@ -82,54 +77,52 @@
     }
 
     footer {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      font-size: 0.9em;
-      color: #777;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #666;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2em;
+    @media (max-width: 768px) {
+      .grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header img {
+        max-height: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
+    <img src="https://images.unsplash.com/photo-1573164574472-cb89e39749b4" alt="Banka Görseli" />
     <h1>🧠 MindGen</h1>
-    <p>Yapay zekayla desteklenen bankacılık eğitim platformuna hoş geldiniz.</p>
-    <p>Bu site GitHub Pages ile yayınlanmaktadır. 🚀</p>
+    <p>Yapay zekayla bankacılık eğitimini yeniden tasarlayan platforma hoş geldiniz.</p>
+    <button class="button">Quiz Başlat</button>
+  </header>
 
-    <button class="button" onclick="alert('Quiz özelliği yakında eklenecek!')">Quiz Başlat</button>
-
-    <div class="form-group">
-      <input type="email" placeholder="E-posta adresiniz" />
-      <button class="button" onclick="alert('Kaydınız alındı (demo)!')">Kaydol</button>
+  <section class="grid">
+    <div class="card">
+      <h3>🏦 Kredi Risk Analizi</h3>
+      <p>Risk sınıflandırmaları, gecikme analizleri ve izleme metodolojileri.</p>
     </div>
-
-    <div class="topics">
-      <div class="card">
-        <h3>🧾 Kredi Türleri</h3>
-        <p>Ticari, bireysel, tarımsal krediler ve detayları.</p>
-      </div>
-      <div class="card">
-        <h3>📉 Risk İzleme Kriterleri</h3>
-        <p>Yakın izleme, takip ve erken uyarı kriterleri.</p>
-      </div>
-      <div class="card">
-        <h3>🏦 Takip Süreci</h3>
-        <p>Donuk alacak aşamaları, gecikme günleri, icra.</p>
-      </div>
-      <div class="card">
-        <h3>❓ Örnek Quiz</h3>
-        <p>“90 günü aşan kredi hangi gruba girer?”</p>
-      </div>
+    <div class="card">
+      <h3>📊 Finansal Rasyolar</h3>
+      <p>Likidite, kârlılık, kaldıraç gibi temel banka rasyolarının yorumu.</p>
     </div>
+    <div class="card">
+      <h3>📍 Şube Performansı</h3>
+      <p>Bölge ve şube KPI takipleri, hedef analizleri ve görselleştirme.</p>
+    </div>
+    <div class="card">
+      <h3>🤖 Yapay Zeka ile Eğitim</h3>
+      <p>Kişiselleştirilmiş konu önerileri ve sınav desteğiyle öğrenme.</p>
+    </div>
+  </section>
 
-    <footer>
-      <p>© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</p>
-    </footer>
-  </div>
+  <footer>
+    © 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.
+  </footer>
 </body>
 </html>
