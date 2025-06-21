@@ -11,11 +11,13 @@
       margin: 0;
       padding: 0;
     }
+    html, body {
+      height: 100%;
+    }
     body {
       font-family: 'Orbitron', sans-serif;
       background: url('https://raw.githubusercontent.com/Cenkkiper/CenkKiper.github.io/refs/heads/main/ChatGPT%20Image%2021%20Haz%202025%2020_23_44.png') center/cover no-repeat fixed;
       color: #ffffff;
-      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -171,13 +173,17 @@
     }
     @media (max-width: 768px) {
       body {
-        padding-top: 300px;
+        padding-top: 400px;
+        background-size: cover;
+      }
+      .hero {
+        transform: translateY(80px);
       }
       .hero h1 {
-        font-size: 28px;
+        font-size: 26px;
       }
       .hero p {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
   </style>
