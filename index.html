@@ -64,6 +64,7 @@
       border-radius: 20px;
       box-shadow: 0 0 20px #00ffee30;
       animation: fadeIn 1s ease forwards;
+      position: relative;
     }
 
     @keyframes fadeIn {
@@ -162,6 +163,20 @@
       margin-top: -5px;
     }
 
+    #logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ff4d4d;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff4d4d80;
+    }
+
     footer {
       position: fixed;
       bottom: 0;
@@ -204,6 +219,7 @@
   </div>
 
   <div id="main-content">
+    <button id="logout-btn" onclick="logout()">Çıkış Yap</button>
     <h2>Bankacılık Eğitim Modülleri</h2>
     <div class="module-grid">
       <div class="module-box" onclick="openTopics('trendler')">
@@ -272,12 +288,21 @@
       }, 3000);
     }
 
+    function logout() {
+      localStorage.removeItem("savedEmail");
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("hero").style.display = "block";
+      document.getElementById("login-section").classList.remove("active");
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("rememberMe").checked = false;
+    }
+
     function openTopics(id) {
       document.querySelectorAll('.topic-box').forEach(el => el.style.display = 'none');
       document.getElementById(id).style.display = 'block';
     }
 
-    // Sayfa yüklendiğinde e-posta alanını doldur
     window.onload = function () {
       const savedEmail = localStorage.getItem("savedEmail");
       if (savedEmail) {
