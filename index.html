@@ -56,14 +56,14 @@
 
     #main-content {
       display: none;
-      text-align: center;
       background: rgba(0, 0, 0, 0.85);
       padding: 40px;
-      margin: 40px;
+      margin: 40px auto;
       border-radius: 20px;
       box-shadow: 0 0 20px #00ffee30;
       animation: fadeIn 1s ease forwards;
       position: relative;
+      max-width: 1200px;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -84,29 +84,53 @@
       box-shadow: 0 0 10px #ff4d4d80;
     }
 
+    .module-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .module {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #00ffee;
+      border-radius: 12px;
+      padding: 20px;
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 0 15px #00ffee40;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .module:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00ffee;
+    }
+
     .module-title {
       font-size: 22px;
       font-weight: bold;
       color: #00ffee;
       cursor: pointer;
+      margin-bottom: 10px;
     }
     .subtopics {
       margin-top: 10px;
-      margin-left: 20px;
+      margin-left: 10px;
       display: none;
+      text-align: left;
     }
     .subtopic {
       margin-bottom: 8px;
       cursor: pointer;
     }
     .cards {
-      margin-left: 40px;
+      margin-left: 20px;
       margin-top: 5px;
       display: none;
     }
     .card {
       display: inline-block;
-      margin-right: 10px;
+      margin: 5px 5px 5px 0;
       padding: 6px 12px;
       border: 1px solid #00ffee;
       border-radius: 5px;
@@ -184,29 +208,29 @@
   </style>
 </head>
 <body>
-  <div class="hero" id="hero">
-    <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
-    <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
-    <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
+<div class="hero" id="hero">
+  <h1>BANKACILIK SINAVI VE YAPAY ZEKA</h1>
+  <p>Banka unvan sınavlarına hazırlık için yapay zeka katkısı ile hazırlanmıştır</p>
+  <button class="enter-btn" onclick="showLogin()">Giriş Yap</button>
+</div>
+
+<div id="login-section">
+  <button class="close-btn" onclick="closeLogin()">×</button>
+  <h2>Giriş Yap</h2>
+  <input type="email" id="email" placeholder="Email adresi">
+  <input type="password" id="password" placeholder="Şifre">
+  <div id="remember-container">
+    <label><input type="checkbox" id="rememberMe"> Beni Hatırla</label>
   </div>
+  <button type="submit" onclick="handleLogin()">Gönder</button>
+</div>
 
-  <div id="login-section">
-    <button class="close-btn" onclick="closeLogin()">×</button>
-    <h2>Giriş Yap</h2>
-    <input type="email" id="email" placeholder="Email adresi">
-    <input type="password" id="password" placeholder="Şifre">
-    <div id="remember-container">
-      <label><input type="checkbox" id="rememberMe"> Beni Hatırla</label>
-    </div>
-    <button type="submit" onclick="handleLogin()">Gönder</button>
-  </div>
-
-  <div id="main-content">
-    <button id="logout-btn" onclick="logout()">Çıkış Yap</button>
-    <h2>Bankacılık Eğitim Modülleri</h2>
-
+<div id="main-content">
+  <button id="logout-btn" onclick="logout()">Çıkış Yap</button>
+  <h2>Bankacılık Eğitim Modülleri</h2>
+  <div class="module-grid">
     <div class="module">
-      <div class="module-title" onclick="toggleSubtopics('trendler')">1 - Bankacılıkta Yeni Trendler</div>
+      <div class="module-title" onclick="toggleSubtopics('trendler')">🏦 1 - Bankacılıkta Yeni Trendler</div>
       <div class="subtopics" id="trendler">
         <div class="subtopic" onclick="toggleCards(this)">A - Yeni Oyuncular</div>
         <div class="subtopic" onclick="toggleCards(this)">B - Yeni Teknolojiler</div>
@@ -217,7 +241,7 @@
     </div>
 
     <div class="module">
-      <div class="module-title" onclick="toggleSubtopics('ekonomi')">2 - Genel Ekonomi, Finans ve Bankacılık</div>
+      <div class="module-title" onclick="toggleSubtopics('ekonomi')">📊 2 - Genel Ekonomi, Finans ve Bankacılık</div>
       <div class="subtopics" id="ekonomi">
         <div class="subtopic" onclick="toggleCards(this)">A - Temel Ekonomi</div>
         <div class="subtopic" onclick="toggleCards(this)">B - Para Politikası ve Uygulamaları</div>
@@ -236,90 +260,89 @@
     </div>
 
     <div class="module">
-      <div class="module-title" onclick="toggleSubtopics('guncel')">3 - Güncel Bilgiler</div>
+      <div class="module-title" onclick="toggleSubtopics('guncel')">🌐 3 - Güncel Bilgiler</div>
       <div class="subtopics" id="guncel">
         <div class="subtopic" onclick="toggleCards(this)">A - Güncel Gelişmeler</div>
       </div>
     </div>
   </div>
+</div>
 
-  <footer><span class="scrolling-text">© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</span></footer>
+<footer><span class="scrolling-text">© 2025 MindGen — Cenk Kiper & Ayşegül Güncan Gökgöz tarafından geliştirilmiştir.</span></footer>
 
-  <script>
-    function showLogin() {
-      document.getElementById("login-section").classList.add("active");
+<script>
+  function showLogin() {
+    document.getElementById("login-section").classList.add("active");
+  }
+  function closeLogin() {
+    document.getElementById("login-section").classList.remove("active");
+  }
+  function handleLogin() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const rememberMe = document.getElementById("rememberMe").checked;
+    if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
+      if (rememberMe) localStorage.setItem("savedEmail", email);
+      else localStorage.removeItem("savedEmail");
+      localStorage.setItem("isLoggedIn", "true");
+      showPrivate();
+    } else if (email && password) {
+      if (rememberMe) localStorage.setItem("savedEmail", email);
+      else localStorage.removeItem("savedEmail");
+      localStorage.setItem("isLoggedIn", "true");
+      showPrivate();
+    } else {
+      alert("Geçersiz giriş");
     }
-    function closeLogin() {
-      document.getElementById("login-section").classList.remove("active");
+  }
+  function showPrivate() {
+    document.getElementById("main-content").style.display = "block";
+    const hero = document.getElementById("hero");
+    hero.classList.add("zoom-animation");
+    setTimeout(() => {
+      hero.style.display = "none";
+      document.getElementById("login-section").style.display = "none";
+    }, 3000);
+  }
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    document.getElementById("main-content").style.display = "none";
+    document.getElementById("hero").style.display = "block";
+    document.getElementById("login-section").classList.remove("active");
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("rememberMe").checked = false;
+  }
+  function toggleSubtopics(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+  function toggleCards(subtopicEl) {
+    let next = subtopicEl.nextElementSibling;
+    const allCards = document.querySelectorAll('.cards');
+    allCards.forEach(card => {
+      if (card !== next) card.style.display = 'none';
+    });
+    if (!next || !next.classList.contains('cards')) {
+      const div = document.createElement('div');
+      div.className = 'cards';
+      div.innerHTML = '<div class="card">ÖZET</div><div class="card">SINAV</div><div class="card">FLASHCARD</div>';
+      subtopicEl.insertAdjacentElement('afterend', div);
+      next = div;
     }
-    function handleLogin() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const rememberMe = document.getElementById("rememberMe").checked;
-      if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
-        if (rememberMe) localStorage.setItem("savedEmail", email);
-        else localStorage.removeItem("savedEmail");
-        localStorage.setItem("isLoggedIn", "true");
-        showPrivate();
-      } else if (email && password) {
-        if (rememberMe) localStorage.setItem("savedEmail", email);
-        else localStorage.removeItem("savedEmail");
-        localStorage.setItem("isLoggedIn", "true");
-        showPrivate();
-      } else {
-        alert("Geçersiz giriş");
-      }
+    next.style.display = next.style.display === 'block' ? 'none' : 'block';
+  }
+  window.onload = function () {
+    const savedEmail = localStorage.getItem("savedEmail");
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (savedEmail) {
+      document.getElementById("email").value = savedEmail;
+      document.getElementById("rememberMe").checked = true;
     }
-    function showPrivate() {
+    if (isLoggedIn === "true") {
       document.getElementById("main-content").style.display = "block";
-      const hero = document.getElementById("hero");
-      hero.classList.add("zoom-animation");
-      setTimeout(() => {
-        hero.style.display = "none";
-        document.getElementById("login-section").style.display = "none";
-      }, 3000);
+      document.getElementById("hero").style.display = "none";
+      document.getElementById("login-section").style.display = "none";
     }
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      document.getElementById("main-content").style.display = "none";
-      document.getElementById("hero").style.display = "block";
-      document.getElementById("login-section").classList.remove("active");
-      document.getElementById("email").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("rememberMe").checked = false;
-    }
-    function toggleSubtopics(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-    function toggleCards(subtopicEl) {
-      let next = subtopicEl.nextElementSibling;
-      const allCards = document.querySelectorAll('.cards');
-      allCards.forEach(card => {
-        if (card !== next) card.style.display = 'none';
-      });
-      if (!next || !next.classList.contains('cards')) {
-        const div = document.createElement('div');
-        div.className = 'cards';
-        div.innerHTML = '<div class="card">ÖZET</div><div class="card">SINAV</div><div class="card">FLASHCARD</div>';
-        subtopicEl.insertAdjacentElement('afterend', div);
-        next = div;
-      }
-      next.style.display = next.style.display === 'block' ? 'none' : 'block';
-    }
-    window.onload = function () {
-      const savedEmail = localStorage.getItem("savedEmail");
-      const isLoggedIn = localStorage.getItem("isLoggedIn");
-      if (savedEmail) {
-        document.getElementById("email").value = savedEmail;
-        document.getElementById("rememberMe").checked = true;
-      }
-      if (isLoggedIn === "true") {
-        document.getElementById("main-content").style.display = "block";
-        document.getElementById("hero").style.display = "none";
-        document.getElementById("login-section").style.display = "none";
-      }
-    }
-  </script>
-</body>
-</html>
+  }
+</script>
