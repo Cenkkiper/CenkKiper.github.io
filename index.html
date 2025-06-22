@@ -23,12 +23,8 @@
     }
 
     @keyframes zoomInToCorner {
-      0% {
-        transform: scale(1) translate(0, 0);
-      }
-      100% {
-        transform: scale(1.2) translate(0, 0);
-      }
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.2) translate(0, 0); }
     }
 
     .hero {
@@ -159,6 +155,13 @@
       color: #fff;
       cursor: pointer;
     }
+
+    #remember-container {
+      color: white;
+      font-size: 14px;
+      margin-top: -5px;
+    }
+
     footer {
       position: fixed;
       bottom: 0;
@@ -194,6 +197,9 @@
     <h2>Giriş Yap</h2>
     <input type="email" id="email" placeholder="Email adresi">
     <input type="password" id="password" placeholder="Şifre">
+    <div id="remember-container">
+      <label><input type="checkbox" id="rememberMe"> Beni Hatırla</label>
+    </div>
     <button type="submit" onclick="handleLogin()">Gönder</button>
   </div>
 
@@ -233,20 +239,29 @@
     function showLogin() {
       document.getElementById("login-section").classList.add("active");
     }
+
     function closeLogin() {
       document.getElementById("login-section").classList.remove("active");
     }
+
     function handleLogin() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
+      const rememberMe = document.getElementById("rememberMe").checked;
+
       if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
+        if (rememberMe) localStorage.setItem("savedEmail", email);
+        else localStorage.removeItem("savedEmail");
         showPrivate();
       } else if (email && password) {
+        if (rememberMe) localStorage.setItem("savedEmail", email);
+        else localStorage.removeItem("savedEmail");
         showPrivate();
       } else {
         alert("Geçersiz giriş");
       }
     }
+
     function showPrivate() {
       document.getElementById("main-content").style.display = "block";
       const hero = document.getElementById("hero");
@@ -256,10 +271,20 @@
         document.getElementById("login-section").style.display = "none";
       }, 3000);
     }
+
     function openTopics(id) {
       document.querySelectorAll('.topic-box').forEach(el => el.style.display = 'none');
       document.getElementById(id).style.display = 'block';
     }
+
+    // Sayfa yüklendiğinde e-posta alanını doldur
+    window.onload = function () {
+      const savedEmail = localStorage.getItem("savedEmail");
+      if (savedEmail) {
+        document.getElementById("email").value = savedEmail;
+        document.getElementById("rememberMe").checked = true;
+      }
+    };
   </script>
 </body>
 </html>
