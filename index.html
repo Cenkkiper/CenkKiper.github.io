@@ -230,39 +230,39 @@
     <h2>Bankacılık Eğitim Modülleri</h2>
     <div class="module-grid">
       <div class="module">
-        <div class="module-title" onclick="toggleSubtopics('trendler')">🏦 1 - Bankacılıkta Yeni Trendler</div>
-        <div class="subtopics" id="trendler">
-          <div class="subtopic" onclick="toggleCards(this)">A - Yeni Oyuncular</div>
-          <div class="subtopic" onclick="toggleCards(this)">B - Yeni Teknolojiler</div>
-          <div class="subtopic" onclick="toggleCards(this)">C - Yeni Ürün ve Hizmetler</div>
-          <div class="subtopic" onclick="toggleCards(this)">D - Yeni Trendler</div>
-          <div class="subtopic" onclick="toggleCards(this)">E - Yeni Düzenlemeler</div>
-        </div>
-      </div>
-      <div class="module">
-        <div class="module-title" onclick="toggleSubtopics('ekonomi')">📊 2 - Genel Ekonomi, Finans ve Bankacılık</div>
-        <div class="subtopics" id="ekonomi">
-          <div class="subtopic" onclick="toggleCards(this)">A - Temel Ekonomi</div>
-          <div class="subtopic" onclick="toggleCards(this)">B - Para Politikası ve Uygulamaları</div>
-          <div class="subtopic" onclick="toggleCards(this)">C - Merkez Bankası ve Para Politikası</div>
-          <div class="subtopic" onclick="toggleCards(this)">D - Merkez Bankası, Döviz Kuru ve Döviz Piyasaları</div>
-          <div class="subtopic" onclick="toggleCards(this)">E - Bankacılık</div>
-          <div class="subtopic" onclick="toggleCards(this)">F - Finansal Sistem ve İşleyişi</div>
-          <div class="subtopic" onclick="toggleCards(this)">G - Sermaye Piyasaları</div>
-          <div class="subtopic" onclick="toggleCards(this)">H - Menkul Kıymetler</div>
-          <div class="subtopic" onclick="toggleCards(this)">I - Temel Para ve Sermaye Piyasası Araçları</div>
-          <div class="subtopic" onclick="toggleCards(this)">J - Türev Araçlar</div>
-          <div class="subtopic" onclick="toggleCards(this)">K - Davranışsal Finans</div>
-          <div class="subtopic" onclick="toggleCards(this)">L - Finansal Okuryazarlık</div>
-          <div class="subtopic" onclick="toggleCards(this)">M - Sürdürülebilirlik ve Kurumsal Yönetim</div>
-        </div>
-      </div>
-      <div class="module">
-        <div class="module-title" onclick="toggleSubtopics('guncel')">🌐 3 - Güncel Bilgiler</div>
-        <div class="subtopics" id="guncel">
-          <div class="subtopic" onclick="toggleCards(this)">A - Güncel Gelişmeler</div>
-        </div>
-      </div>
+  <div class="module-title" onclick="toggleSubtopics('trendler')">🏦 1 - Bankacılıkta Yeni Trendler</div>
+  <div class="subtopics" id="trendler">
+    <div class="subtopic" onclick="toggleCards(this)">A - Yeni Oyuncular</div>
+    <div class="subtopic" onclick="toggleCards(this)">B - Yeni Teknolojiler</div>
+    <div class="subtopic" onclick="toggleCards(this)">C - Yeni Ürün ve Hizmetler</div>
+    <div class="subtopic" onclick="toggleCards(this)">D - Yeni Trendler</div>
+    <div class="subtopic" onclick="toggleCards(this)">E - Yeni Düzenlemeler</div>
+  </div>
+</div>
+<div class="module">
+  <div class="module-title" onclick="toggleSubtopics('ekonomi')">📊 2 - Genel Ekonomi, Finans ve Bankacılık</div>
+  <div class="subtopics" id="ekonomi">
+    <div class="subtopic" onclick="toggleCards(this)">A - Temel Ekonomi</div>
+    <div class="subtopic" onclick="toggleCards(this)">B - Para Politikası ve Uygulamaları</div>
+    <div class="subtopic" onclick="toggleCards(this)">C - Merkez Bankası ve Para Politikası</div>
+    <div class="subtopic" onclick="toggleCards(this)">D - Merkez Bankası, Döviz Kuru ve Döviz Piyasaları</div>
+    <div class="subtopic" onclick="toggleCards(this)">E - Bankacılık</div>
+    <div class="subtopic" onclick="toggleCards(this)">F - Finansal Sistem ve İşleyişi</div>
+    <div class="subtopic" onclick="toggleCards(this)">G - Sermaye Piyasaları</div>
+    <div class="subtopic" onclick="toggleCards(this)">H - Menkul Kıymetler</div>
+    <div class="subtopic" onclick="toggleCards(this)">I - Temel Para ve Sermaye Piyasası Araçları</div>
+    <div class="subtopic" onclick="toggleCards(this)">J - Türev Araçlar</div>
+    <div class="subtopic" onclick="toggleCards(this)">K - Davranışsal Finans</div>
+    <div class="subtopic" onclick="toggleCards(this)">L - Finansal Okuryazarlık</div>
+    <div class="subtopic" onclick="toggleCards(this)">M - Sürdürülebilirlik ve Kurumsal Yönetim</div>
+  </div>
+</div>
+<div class="module">
+  <div class="module-title" onclick="toggleSubtopics('guncel')">🌐 3 - Güncel Bilgiler</div>
+  <div class="subtopics" id="guncel">
+    <div class="subtopic" onclick="toggleCards(this)">A - Güncel Gelişmeler</div>
+  </div>
+</div>
     </div>
   </div>
 
@@ -276,21 +276,28 @@
       document.getElementById("login-section").classList.remove("active");
     }
     function handleLogin() {
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value.trim().toLowerCase();
       const password = document.getElementById("password").value;
       const rememberMe = document.getElementById("rememberMe").checked;
-      if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
+
+      const passwordlessEmails = ["cenkkiper@gmail.com", "aysegul_guncan@hotmail.com"];
+      const invitedUsers = {
+        "aysegulguncan@gmail.com": "1234",
+        "mustafa@example.com": "abcd"
+      };
+
+      if (passwordlessEmails.includes(email) && password === "") {
         if (rememberMe) localStorage.setItem("savedEmail", email);
         else localStorage.removeItem("savedEmail");
         localStorage.setItem("isLoggedIn", "true");
         showPrivate();
-      } else if (email && password) {
+      } else if (invitedUsers[email] && invitedUsers[email] === password) {
         if (rememberMe) localStorage.setItem("savedEmail", email);
         else localStorage.removeItem("savedEmail");
         localStorage.setItem("isLoggedIn", "true");
         showPrivate();
       } else {
-        alert("Geçersiz giriş");
+        alert("Geçersiz giriş. E-posta ve/veya şifre hatalı.");
       }
     }
     function showPrivate() {
