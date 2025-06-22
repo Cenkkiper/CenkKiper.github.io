@@ -2,74 +2,80 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Konu Flashcard</title>
+  <title>Flashcard – MindGen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background-color: #0a0a0a;
       color: white;
-      padding: 40px;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
     }
-    h2 {
+    h1 {
       color: #00ffee;
+      text-shadow: 0 0 6px #00ffee;
     }
     .flashcard {
-      margin: 20px 0;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
+      background: rgba(0, 255, 238, 0.1);
       border: 1px solid #00ffee;
-      box-shadow: 0 0 10px #00ffee40;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    .soru {
-      font-weight: bold;
-      color: #00ffee;
+    .flashcard:hover {
+      background: rgba(0, 255, 238, 0.2);
     }
-    .cevap {
-      margin-top: 10px;
+    .answer {
       display: none;
+      margin-top: 10px;
       color: #ccc;
     }
     .back-link {
-      display: inline-block;
       margin-top: 30px;
-      color: #ccc;
-      text-decoration: underline;
+      display: inline-block;
+      color: #00ffee;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <h2>💡 Konu Flashcard</h2>
-  <div id="icerik">Yükleniyor...</div>
-  <a href="index.html" class="back-link">⟵ Ana Sayfaya Dön</a>
+  <h1>Flashcard</h1>
+  <div id="flashcard-container">Yükleniyor...</div>
+  <a href="index.html" class="back-link">← Ana Sayfa</a>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const konu = urlParams.get('konu') || 'trendler-a';
+    function getParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    const konu = getParameter("konu") || "ornek";
+    const container = document.getElementById("flashcard-container");
 
     fetch(`data/flashcard/${konu}.json`)
-      .then(response => {
-        if (!response.ok) throw new Error("Veri yüklenemedi");
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        const flashcardHTML = data.kartlar.map((kart, i) => `
-          <div class="flashcard">
-            <div class="soru">${i + 1}. ${kart.soru}</div>
-            <div class="cevap">${kart.cevap}</div>
-          </div>
-        `).join('');
-        document.getElementById('icerik').innerHTML = flashcardHTML;
-
-        document.querySelectorAll('.flashcard').forEach(card => {
-          card.addEventListener('click', () => {
-            const cevap = card.querySelector('.cevap');
-            cevap.style.display = cevap.style.display === 'block' ? 'none' : 'block';
+        container.innerHTML = "";
+        data.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "flashcard";
+          card.innerHTML = `<strong>${index + 1}. ${item.soru}</strong><div class="answer">${item.cevap}</div>`;
+          card.addEventListener("click", () => {
+            const answer = card.querySelector(".answer");
+            answer.style.display = answer.style.display === "none" ? "block" : "none";
           });
+          container.appendChild(card);
         });
       })
-      .catch(error => {
-        document.getElementById('icerik').innerHTML = `<p style='color: red;'>Hata: ${error.message}</p>`;
+      .catch(err => {
+        container.innerHTML = "Flashcard verileri yüklenemedi.";
+        console.error(err);
       });
   </script>
 </body>
