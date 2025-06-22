@@ -21,6 +21,10 @@
       border: 1px solid #00ffee;
       box-shadow: 0 0 10px #00ffee40;
     }
+    a {
+      color: #00ffee;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -28,10 +32,11 @@
   <div id="icerik">Yükleniyor...</div>
 
   <script>
-    // Örnek: URL parametresiyle hangi konunun yükleneceğini belirle
+    // URL parametresinden konuyu al
     const urlParams = new URLSearchParams(window.location.search);
-    const konu = urlParams.get('konu') || 'trendler-a'; // varsayılan örnek
+    const konu = urlParams.get('konu') || 'trendler-a';
 
+    // JSON'dan veri çek
     fetch(`data/ozet/${konu}.json`)
       .then(response => {
         if (!response.ok) throw new Error("Veri yüklenemedi");
