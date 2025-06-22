@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Konu Özeti</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      padding: 40px;
+    }
+    h2 {
+      color: #00ffee;
+    }
+    #icerik {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #00ffee;
+      box-shadow: 0 0 10px #00ffee40;
+    }
+  </style>
+</head>
+<body>
+  <h2>📘 Konu Özeti</h2>
+  <div id="icerik">Yükleniyor...</div>
+
+  <script>
+    // Örnek: URL parametresiyle hangi konunun yükleneceğini belirle
+    const urlParams = new URLSearchParams(window.location.search);
+    const konu = urlParams.get('konu') || 'trendler-a'; // varsayılan örnek
+
+    fetch(`data/ozet/${konu}.json`)
+      .then(response => {
+        if (!response.ok) throw new Error("Veri yüklenemedi");
+        return response.json();
+      })
+      .then(data => {
+        document.getElementById('icerik').innerHTML = `<p>${data.ozet}</p>`;
+      })
+      .catch(error => {
+        document.getElementById('icerik').innerHTML = `<p style='color: red;'>Hata: ${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>
