@@ -265,13 +265,13 @@
       const password = document.getElementById("password").value;
       const rememberMe = document.getElementById("rememberMe").checked;
 
-      if ((email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "") {
+      const authorized = (email === "cenkkiper@gmail.com" || email === "aysegul_guncan@hotmail.com") && password === "";
+
+      if (authorized || (email && password)) {
         if (rememberMe) localStorage.setItem("savedEmail", email);
         else localStorage.removeItem("savedEmail");
-        showPrivate();
-      } else if (email && password) {
-        if (rememberMe) localStorage.setItem("savedEmail", email);
-        else localStorage.removeItem("savedEmail");
+
+        localStorage.setItem("isLoggedIn", "true");
         showPrivate();
       } else {
         alert("Geçersiz giriş");
@@ -288,8 +288,14 @@
       }, 3000);
     }
 
+    function showPrivateImmediately() {
+      document.getElementById("main-content").style.display = "block";
+      document.getElementById("hero").style.display = "none";
+      document.getElementById("login-section").style.display = "none";
+    }
+
     function logout() {
-      localStorage.removeItem("savedEmail");
+      localStorage.removeItem("isLoggedIn");
       document.getElementById("main-content").style.display = "none";
       document.getElementById("hero").style.display = "block";
       document.getElementById("login-section").classList.remove("active");
@@ -305,9 +311,15 @@
 
     window.onload = function () {
       const savedEmail = localStorage.getItem("savedEmail");
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
       if (savedEmail) {
         document.getElementById("email").value = savedEmail;
         document.getElementById("rememberMe").checked = true;
+      }
+
+      if (isLoggedIn === "true") {
+        showPrivateImmediately();
       }
     };
   </script>
